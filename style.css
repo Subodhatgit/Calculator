@@ -1,0 +1,52 @@
+body{
+    background-color: #57b8ff;
+}
+
+body>header{
+    color:white;
+    container-type: inline-size;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+/* // <uniquifier>: Use a unique and descriptive class name */
+/* // <weight>: Use a value from 400 to 700 */
+
+/* // <uniquifier>: Use a unique and descriptive class name */
+
+header>h1.heading {
+    /* // <uniquifier>: Use a unique and descriptive class name */
+
+    /* .workbench-<uniquifier> { */
+      font-family: "Workbench", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-size : clamp(3em,19cqi,7em);
+      font-style: normal;
+      text-align: center;
+      margin-top: 0;
+      font-variation-settings:
+        "BLED" 0,
+        "SCAN" -35;
+        
+    }
+
+.buttonsForCalculator{
+    display: flex;
+}
+
+section.container{
+    border: black 2px solid;
+    height: auto;
+    width: 65vw;
+    margin: auto;
+}
+
+div.screen{
+    background-color: white;
+    height: 4vw;
+}
+p.answer{
+    margin: 0;
+}
