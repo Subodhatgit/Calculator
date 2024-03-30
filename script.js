@@ -1,7 +1,7 @@
 window.onload=function(){
 
 //All the variables//
-let firstNumber = '';
+let finalResult = '';
 let secondNumber = '';
 const addButton = document.querySelector('#addbutton');
 const subtractButton = document.querySelector('#subtractbutton');
@@ -18,9 +18,6 @@ let resetIsPressed=false;
 
 const allButtons = document.querySelectorAll('.buttons');
 const screen = document.querySelector('.screen');
-
-
-   
 
 //event listener for add button//
 addButton.addEventListener('click',()=>{
@@ -53,70 +50,129 @@ equalButton.addEventListener('click',()=>{
 
 //event listener for reset button//
 resetButton.addEventListener('click',()=>{
-    resetIsPressed=true;
+    clearScreenWithReset();
     
 });
+console.log(finalResult);
 
 
-  
 //function for showing any button pressed on screen//
-
 allButtons.forEach((button1)=>{
     button1.addEventListener('click',()=>{
 
-        if(screen.textContent.includes('answer') ){
-            screen.textContent='';
-        }
+        emptyScreen();
 
-        const removeP = document.querySelector('.answer');
-        if(removeP){
-            removeP.remove();
-        };
-        if(resetIsPressed){
-            screen.textContent = "";
-            resetIsPressed = false;
-            return;
+        
+        
 
-        }
-        if(equalIsPressed===false){
-        screen.textContent+=button1.textContent;
-        }    
-        if(equalIsPressed===true){
-        let result = screen.textContent.split(/[\n+\-*/]/).map(str => str.trim()).filter(Boolean);
-        firstNumber=Number(result[0]);
-        secondNumber=Number(result[1]);
-        equalIsPressed=false;
-
-        if(addIsPressed==true){
-           let finalResult = firstNumber+secondNumber;
-           addIsPressed=false; 
-           screen.textContent="Your answer is : "+finalResult;
-        }
-
-        if(subtractIsPressed==true){
-            let finalResult = firstNumber-secondNumber;
-            subtractIsPressed=false; 
-            screen.textContent="Your answer is : "+finalResult;
-         }
-
-         if(multiplyIsPressed==true){
-            let finalResult = firstNumber*secondNumber;
-            multiplyIsPressed=false; 
-            screen.textContent="Your answer is : "+finalResult;
-         }
-
-         if(divideIsPressed==true){
-            let finalResult = firstNumber/secondNumber;
-            divideIsPressed=false; 
-            screen.textContent="Your answer is : "+finalResult;
-         }
-        return;
-        }
-        // if(addIsPressed){
-        //     firstNumber=Number(screen.textContent);
-        //     console.log
-        // }
+        calculateAnswer(button1);
+        
+        });
+    
     });
-});
-console.log(secondNumber);
+
+//Function for operation/calculation //
+ function operate(a,b){
+    if(addIsPressed==true){
+        addIsPressed=false;
+        return a+b;
+        
+    }
+
+    if(subtractIsPressed==true){
+        subtractIsPressed=false;
+        return a-b;
+    } 
+
+    if(multiplyIsPressed==true){
+        multiplyIsPressed=false;
+        return  a*b;
+    } 
+
+    if(divideIsPressed==true){
+        divideIsPressed=false;
+        return a/b;
+    } 
+    
+ };
+
+ //Function to clear screen after an answer//
+    function emptyScreen(){
+    if(screen.textContent.includes('answer') ){
+        screen.textContent = '';
+    }
+    // if(finalResult!=''){
+    //     screen.textContent = finalResult;
+    // }
+
+};
+
+//Function for clearing screen at any time when reset is pressed//
+    function clearScreenWithReset(){
+        screen.textContent = "";
+        finalResult = '';
+    };
+     
+   //Function for the arithmetical operations//
+   function calculateAnswer(button1){
+
+        if(equalIsPressed===false){
+            
+            if(finalResult!=''){
+                    screen.textContent=finalResult;  
+                    finalResult='';
+            }  
+        screen.textContent+=button1.textContent;
+        };   
+
+         if(equalIsPressed===true&&screen.textContent){
+            
+            let result = screen.textContent.split(/[\n+\-*/]/).map(str => str.trim()).filter(Boolean);
+            let arithmeticOrder = screen.textContent.match(/[-+/*]/g);
+            console.log(result);
+            console.log(arithmeticOrder);
+            if (result.length<=arithmeticOrder.length){
+                result.unshift(0);
+                
+            }
+                
+            
+            arithmeticOrder.forEach((operator)=>{
+
+               
+                var processedValue = performOperation(operator,Number(result[0]),Number(result[1]));
+                result.shift();
+                result.shift();
+                result.unshift(processedValue);
+                finalResult=processedValue;
+                if(result.length==1){
+                    screen.textContent="answer"+":"+screen.textContent+"="+finalResult;
+                    
+                }
+               
+                
+            })
+            
+            equalIsPressed=false;
+             
+        }
+             
+        };
+   }; 
+
+
+   //Function that gives output according to operator used//
+   function performOperation(operator, a, b) {
+    switch (operator) {
+        case "+":
+            return a + b;
+        case "-":
+            return a - b;
+        case "*":
+            return a * b;
+        case "/":
+            return a / b;
+        default:
+            return null;
+    }
 }
