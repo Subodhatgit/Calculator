@@ -18,6 +18,7 @@ let resetIsPressed=false;
 
 const allButtons = document.querySelectorAll('.buttons');
 const screen = document.querySelector('.screen');
+let answer1 = document.querySelector(".answer")
 
 //event listener for add button//
 addButton.addEventListener('click',()=>{
@@ -98,44 +99,58 @@ allButtons.forEach((button1)=>{
 
  //Function to clear screen after an answer//
     function emptyScreen(){
-    if(screen.textContent.includes('answer') ){
-        screen.textContent = '';
-    }
+    if( answer1.textContent.includes('answer') ){
+        answer1.textContent = '';
+    }else if(answer1.textContent.includes("=>")){
+		answer1.textContent = finalResult;
+	}
     // if(finalResult!=''){
-    //     screen.textContent = finalResult;
+    //     answer1.textContent = finalResult;
     // }
 
 };
 
 //Function for clearing screen at any time when reset is pressed//
     function clearScreenWithReset(){
-        screen.textContent = "";
+        answer1.textContent = "";
         finalResult = '';
     };
      
    //Function for the arithmetical operations//
    function calculateAnswer(button1){
+	if (button1.textContent === '.') {
+        // Check if the current number already has a decimal point
+        let currentNumber = answer1.textContent.split(/[\n+\-*/%]/).pop();
+        if (currentNumber.includes('.')) {
+            // If it does, return early to ignore the extra decimal point
+            return;
+        }
+    }
 
         if(equalIsPressed===false){
             
             if(finalResult!=''){
-                    screen.textContent=finalResult;  
+                    answer1.textContent=finalResult;  
                     finalResult='';
             }  
-        screen.textContent+=button1.textContent;
+        answer1.textContent+=button1.textContent;
         };   
 
-         if(equalIsPressed===true&&screen.textContent){
-            
-            let result = screen.textContent.split(/[\n+\-*/]/).map(str => str.trim()).filter(Boolean);
-            let arithmeticOrder = screen.textContent.match(/[-+/*]/g);
+         if(equalIsPressed===true&&answer1.textContent){
+           
+            let result = answer1.textContent.split(/[\n+\-*/%]/).map(str => str.trim()).filter(Boolean);
+            let arithmeticOrder = answer1.textContent.match(/[-+/*%]/g);
             console.log(result);
             console.log(arithmeticOrder);
+            if(arithmeticOrder[arithmeticOrder.length-1]=="%"&&result.length<=arithmeticOrder.length){
+                result.push(1);
+            }
+              
             if (result.length<=arithmeticOrder.length){
                 result.unshift(0);
                 
             }
-                
+             
             
             arithmeticOrder.forEach((operator)=>{
 
@@ -146,7 +161,7 @@ allButtons.forEach((button1)=>{
                 result.unshift(processedValue);
                 finalResult=processedValue;
                 if(result.length==1){
-                    screen.textContent="answer"+":"+screen.textContent+"="+finalResult;
+                    answer1.textContent="=>"+finalResult;
                     
                 }
                
@@ -155,6 +170,8 @@ allButtons.forEach((button1)=>{
             
             equalIsPressed=false;
              
+        }else{
+            equalIsPressed=false;
         }
              
         };
@@ -172,6 +189,8 @@ allButtons.forEach((button1)=>{
             return a * b;
         case "/":
             return a / b;
+        case "%":
+            return a/100*b;    
         default:
             return null;
     }

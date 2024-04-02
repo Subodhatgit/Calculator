@@ -1,54 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="script.js"></script> >
-    
+    <script src="script.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=DynaPuff:wght@400..700&family=Honk&family=Nabla&family=Raleway:ital,wght@0,100..900;1,100..900&family=Workbench:SCAN@-35&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=DynaPuff:wght@400..700&family=Honk&family=Nabla&family=Raleway:ital,wght@0,100..900;1,100..900&family=Workbench&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=DynaPuff:wght@400..700&family=Honk&family=Nabla&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=DynaPuff:wght@400..700&family=Honk&family=Nabla&family=Nanum+Gothic&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Workbench:SCAN@-35&display=swap" rel="stylesheet">
+    <title>Calculator</title>
+   </head>
 <body>
     <header>
         <h1 class="heading">A Simple Calculator</h1>
     </header>
     <section class="container">
         <div class="screen">
-            <p class="answer">Your answer appears here</p>
+            <p class="answer">0</p>
         </div>
         <div class="buttonsForCalculator">
             
-            <button class="buttons" id="onebutton">1</button>
-            <button class="buttons" id="twobutton">2</button>
-            <button class="buttons" id="threebutton">3</button>
+
+            <div class="zerorow rows">
+                <button class="reset" id="resetbutton">AC</button>
+
+                    <button class="buttons" id="percentagebutton">%</button>
+              
+                
+                    <button class="buttons" id="dividebutton">/</button>
+                
+            </div>
+
+            <div class="firstrow rows">
+
+                <button class="buttons" id="sevenbutton">7</button>
+                <button class="buttons" id="eightbutton">8</button>
+                <button class="buttons" id="ninebutton">9</button>
+                <button class="buttons" id="multiplybutton">*</button>
+
+            </div>
+
+             <div class="secondrow rows">
+
             <button class="buttons" id="fourbutton">4</button>
             <button class="buttons" id="fivebutton">5</button>
             <button class="buttons" id="sixbutton">6</button>
-            
-            <div class="firstrow">
-            <button class="buttons" id="sevenbutton">7</button>
-            <button class="buttons" id="eightbutton">8</button>
-            <button class="buttons" id="ninebutton">9</button>
-             </div>
-            <button class="buttons" id="zerobutton">0</button>
-            <button class="buttons" id="decimalbutton">.</button>
-
-            <button class="buttons" id="addbutton">+</button>
-            <button class="buttons" id="multiplybutton">*</button>
             <button class="buttons" id="subtractbutton">-</button>
-            <button class="buttons" id="dividebutton">/</button>
+
+            
+            </div>
+
+   
+
+            <div class="fourthrow rows">
+                <button class="buttons" id="onebutton">1</button>
+                <button class="buttons" id="twobutton">2</button>
+                <button class="buttons" id="threebutton">3</button>
+                <button class="buttons" id="addbutton">+</button>
+
+                
+            </div>
+                
+            <div class="fifthrow rows">
+                <button class="buttons" id="zerobutton">0</button>
+                <button class="buttons" id="decimalbutton">.</button>
+
             <button class="buttons" id="equalbutton">=</button>
-            <button class="reset" id="resetbutton">c</button>
 
-
+            </div>
         </div>
     </section>
     <footer></footer>

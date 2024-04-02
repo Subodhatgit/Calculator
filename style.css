@@ -1,81 +1,128 @@
 body{
-    background-color: #57b8ff;
+    background-color: #3c3c3c;
 }
 
-body>header{
-    color:white;
-    container-type: inline-size;
+h1.heading{
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #ff5a5f;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
+    font-size: clamp(5rem ,20vw, 7rem);
 }
-/* // <uniquifier>: Use a unique and descriptive class name */
-/* // <weight>: Use a value from 400 to 700 */
-
-/* // <uniquifier>: Use a unique and descriptive class name */
-
-header>h1.heading {
-    /* // <uniquifier>: Use a unique and descriptive class name */
-
-    /* .workbench-<uniquifier> { */
-      font-family: "Workbench", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-size : clamp(3em,19cqi,7em);
-      font-style: normal;
-      text-align: center;
-      margin-top: 0;
-      font-variation-settings:
-        "BLED" 0,
-        "SCAN" -35;
-        
-    }
 
 .buttonsForCalculator{
     display: flex;
 }
 
 section.container{
-    border: black 2px solid;
-    height: auto;
-    width: 65vw;
+  
+    width: 40vw;
+    padding: 1%;
     margin: auto;
 }
 
 div.screen{
     background-color: white;
-    height: 4vw;
+    font-size: 33px;
+    height: 7vw;
+    padding: 0 1vw;
+    border: 10px solid #2f2f2f;
+    overflow-x: auto;
+
+    /* This will add a vertical scrollbar if the text overflows the container */
+    overflow-y: auto;
+
+    /* Or use 'overflow: auto;' to handle both directions at once */
+
+    /* This will break long words and wrap them to the next line */
+    word-wrap: break-word;
+
+    /* This will break words at the nearest space to prevent overflow */
+    white-space: normal;
 }
 p.answer{
-    margin: 0;
+    margin: auto;
+    font-size: 5.8vw;
+    text-align: end;
+    
+   
+    align-items: center;
 }
 div.buttonsForCalculator{
+   height: auto;
+   border: 10px #2f2f2f solid;
+    display:flex;
+    
+    align-items: center;   
+    flex-direction: column; 
+   
+}
+div.zerorow{
+    display: flex;
+    justify-content: space-between;
+}
+#dividebutton,#multiplybutton,#subtractbutton,#addbutton
+,#equalbutton{
+    background-color: #ff8f1f;
+}
+
+#percentagebutton,#dividebutton,#decimalbutton,#equalbutton{
+    width: 26.6%;
+}
+
+button {
+    cursor: pointer;
+    font-size: 4vw;
+    height: auto;
     display: flex;
     align-items: center;
-    flex-direction: space-between;
-}
-button {
-    display: inline-block;
-    font-size: 1em;
-    padding: 10px 20px;
-    margin: 10px 2px;
-    cursor: pointer;
+    justify-content: center;
+    background-color: #217c7e;
+    padding: 2vw 3vw;
+   
+    width: 10vw;
     text-align: center;
     text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
+    outline:black 3px solid;
+    color: black;
+    margin: 3px;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
+    border-radius: 6px;
+    
+    
+}
+
+#equalbutton{
+}  
+
+button:active ,#resetbutton:active,#percentagebutton:active,
+#dividebutton:active,
+#multiplybutton:active,
+#subtractbutton:active,
+#addbutton:active,
+#equalbutton:active{
+    background-color: #5e5e5e; /* Change color when pressed */
+     /* Change box shadow when pressed */
+    transform: translateY(4px); /* Move slightly down when pressed */
+}
+.fourthrow{
+   display: flex;
+   width: 100%;
+}
+  #resetbutton,#zerobutton{
+   width: 60%;
+}
+
+#resetbutton,#percentagebutton{
+    background-color: #1e90ff;
+}
+.rows{
+    display: flex;
+    justify-content: space-between;
+ 
+    width: 100%;
+}
+#percentagebutton{
+    width:24%;
   }
-  
-  button:hover {background-color: #3e8e41}
-  
-  button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  
